@@ -1,5 +1,5 @@
-import { v } from "convex/values";
-import { mutation } from "./_generated/server";
+import { ConvexError, v } from "convex/values";
+import { mutation, query } from "./_generated/server";
 
 export const synUser = mutation({
     args: {
@@ -22,3 +22,26 @@ export const synUser = mutation({
         }
     }
 });
+
+export const getUser = query({
+    args: {
+        userId: v.string(),
+    },
+    handler: async (ctx, args) => {
+        if(!args.userId){
+            throw new ConvexError("UserId not found");
+        }
+
+        const user = await ctx.db
+            .query("users")
+            .withIndex("by_user_id")
+            .filter(q => q.eq(q.field("userId"), args.userId))
+            .first();
+
+        if(!user){
+            throw new ConvexError("User not found");
+        }
+
+        return user;
+    }
+})
