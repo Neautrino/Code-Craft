@@ -63,8 +63,7 @@ function ThemeSelector() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-full left-0 mt-2 w-full min-w-[240px] bg-[#1e1e2e]/95 
-            backdrop-blur-xl rounded-xl border border-[#313244] shadow-2xl py-2 z-50"
+            className="absolute top-full left-0 mt-2 w-full min-w-[240px] bg-[#1e1e2e]/95 backdrop-blur-xl rounded-xl border border-[#313244] shadow-2xl py-2 z-50"
           >
             <div className="px-2 pb-2 mb-2 border-b border-gray-800/50">
               <p className="text-xs font-medium text-gray-400 px-2">Select Theme</p>
@@ -84,16 +83,14 @@ function ThemeSelector() {
               >
                 {/* bg gradient */}
                 <div
-                  className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 
-              group-hover:opacity-100 transition-opacity"
+                  className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity"
                 />
 
                 {/* icon */}
                 <div
-                  className={`
-                flex items-center justify-center size-8 rounded-lg
-                ${theme === t.id ? "bg-blue-500/10 text-blue-400" : "bg-gray-800/50 text-gray-400"}
-                group-hover:scale-110 transition-all duration-200
+                  className={`flex items-center justify-center size-8 rounded-lg
+                  ${theme === t.id ? "bg-blue-500/10 text-blue-400" : "bg-gray-800/50 text-gray-400"}
+                  group-hover:scale-110 transition-all duration-200
               `}
                 >
                   {THEME_ICONS[t.id] || <CircleOff className="w-4 h-4" />}
@@ -105,8 +102,7 @@ function ThemeSelector() {
 
                 {/* color indicator */}
                 <div
-                  className="relative size-4 rounded-full border border-gray-600 
-                group-hover:border-gray-500 transition-colors"
+                  className="relative size-4 rounded-full border border-gray-600 group-hover:border-gray-500 transition-colors"
                   style={{ background: t.color }}
                 />
 
