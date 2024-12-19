@@ -6,6 +6,7 @@ import { LANGUAGE_CONFIG } from "../_constants";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronDownIcon, Lock, Sparkles } from "lucide-react";
+import useMounted from "@/hooks/useMounted";
 
 function LanguageSelector({hasAccess}: {hasAccess: boolean}) {
 
@@ -13,6 +14,7 @@ function LanguageSelector({hasAccess}: {hasAccess: boolean}) {
     const { language, setLanguage } = useCodeEditorStore();
     const dropdownRef = useRef<HTMLDivElement>(null);
     const currentLanguageObj = LANGUAGE_CONFIG[language];
+    const mounted = useMounted();
   
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
@@ -31,6 +33,8 @@ function LanguageSelector({hasAccess}: {hasAccess: boolean}) {
       setLanguage(langId);
       setIsOpen(false);
     }
+
+    if (!mounted) return null;
 
   return (
     <div className="relative" ref={dropdownRef}>
