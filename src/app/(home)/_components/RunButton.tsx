@@ -1,21 +1,29 @@
 "use client";
 
-import { useCodeEditorStore } from "@/store/useCodeEditorStore";
+import { getExecutionResult, useCodeEditorStore } from "@/store/useCodeEditorStore";
 import { useUser } from "@clerk/nextjs";
+import { useMutation } from "convex/react";
 import { motion } from "framer-motion";
 import { Loader2, Play } from "lucide-react";
+import { api } from "../../../../convex/_generated/api";
 
 function RunButton() {
 
-  const user = useUser();
-  const { runCode, language, isRunning, executionResult} = useCodeEditorStore();
+  const { user } = useUser();
+  const { runCode, language, isRunning } = useCodeEditorStore();
+  const saveExecution = useMutation(api.codeExecutions.saveExecution);
 
-  const handleRun = async() => {
-
+  const handleRun = async () => {
     await runCode();
+    const result = getExecutionResult();
 
-    if(user && executionResult){
-       
+    if (user && result) {
+      await saveExecution({
+        language,
+        code: result.code,
+        output: result.output || undefined,
+        error: result.error || undefined,
+      });
     }
   }
 
@@ -42,7 +50,7 @@ function RunButton() {
         ) : (
           <>
             <div className="relative flex items-center justify-center w-4 h-4">
-              <Play  className="w-4 h-4 text-white/90 transition-transform group-hover:scale-110 group-hover:text-white" />
+              <Play className="w-4 h-4 text-white/90 transition-transform group-hover:scale-110 group-hover:text-white" />
             </div>
             <span className="text-sm font-medium text-white/90 group-hover:text-white">
               Run Code
