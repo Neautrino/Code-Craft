@@ -8,7 +8,7 @@ export default defineSchema({
         email: v.string(),
         name: v.string(),
         isPro: v.boolean(),
-        proSince: v.optional(v.string()),
+        proSince: v.optional(v.number()),
         lemonSqeezyCustomerId: v.optional(v.string()),
         lemonSqeezyOrderId: v.optional(v.string()),
     }).index("by_user_id", ["userId"]),
