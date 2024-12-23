@@ -34,6 +34,8 @@ function SnippetsDetailPage() {
 							<div className="flex items-center gap-4">
 								<div className="flex items-center justify-center size-12 rounded-xl bg-[#ffffff08] p-2.5">
 									<Image
+										width={24}
+										height={24}
 										src={`/${snippet.language}.png`}
 										alt={`${snippet.language} logo`}
 										className="w-full h-full object-contain"

@@ -107,7 +107,7 @@ function SnippetsPage() {
                                 `}
                             >
                                 <div className="flex items-center gap-2">
-                                    <Image src={`/${lang}.png`} alt={lang} className="w-4 h-4 object-contain" />
+                                    <Image src={`/${lang}.png`} alt={lang} width={24} height={24} className="object-contain" />
                                     <span className="text-sm">{lang}</span>
                                 </div>
                             </button>

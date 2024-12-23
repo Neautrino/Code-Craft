@@ -15,7 +15,7 @@ const CodeBlock = ({ language, code }: { language: string; code: string }) => {
       <div className="flex items-center justify-between px-4 py-2 bg-[#ffffff08]">
  
         <div className="flex items-center gap-2">
-          <Image src={`/${language}.png`} alt={language} className="size-4 object-contain" />
+          <Image src={`/${language}.png`} width={24} height={24} alt={language} className="size-4 object-contain" />
           <span className="text-sm text-gray-400">{language || "plaintext"}</span>
         </div>
 
