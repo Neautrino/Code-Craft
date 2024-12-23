@@ -2,7 +2,6 @@ import { CodeEditorState } from "@/types";
 import { LANGUAGE_CONFIG } from "@/app/(home)/_constants";
 import { Monaco } from "@monaco-editor/react";
 import { create } from "zustand";
-import { version } from "os";
 
 const getInitialState = () => {
 

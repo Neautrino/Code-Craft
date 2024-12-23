@@ -4,6 +4,7 @@ import { Activity, Code2, Star, Timer, TrendingUp, Trophy, UserIcon, Zap } from 
 import { useQuery } from "convex/react";
 import { api } from "../../../../convex/_generated/api";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface ProfileHeaderProps {
   userStats: {
@@ -86,7 +87,7 @@ function ProfileHeader({ userStats, userData, user }: ProfileHeaderProps) {
             className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full 
           blur-xl opacity-50 group-hover:opacity-75 transition-opacity"
           />
-          <img
+          <Image
             src={user.imageUrl}
             alt="Profile"
             className="w-24 h-24 rounded-full border-4 border-gray-800/50 relative z-10 group-hover:scale-105 transition-transform"
