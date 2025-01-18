@@ -29,7 +29,7 @@ export const getUser = query({
     },
     handler: async (ctx, args) => {
         if (!args.userId) {
-            throw new ConvexError("UserId not found");
+            return null;
         }
 
         const user = await ctx.db

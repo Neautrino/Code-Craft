@@ -1,6 +1,5 @@
 import { ConvexError, v } from "convex/values";
 import { mutation, query } from "./_generated/server";
-import { q } from "framer-motion/client";
 
 export const createSnippet = mutation({
     args: {
@@ -173,7 +172,7 @@ export const isSnippetStarred = query({
     handler: async (ctx, args) => {
         const identity = await ctx.auth.getUserIdentity();
         if (!identity) {
-            throw new ConvexError("Not Authenticated");
+            return null;
         }
 
         const start = await ctx.db
